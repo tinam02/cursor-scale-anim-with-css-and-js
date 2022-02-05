@@ -1,0 +1,75 @@
+.cursor {
+  will-change: transform, transition, width, height, top, left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  mix-blend-mode: difference;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  /* animacija za "mouseout", ovo je default */
+  animation: animIdle 0.4s forwards;
+}
+* {
+  margin: 0;
+  padding: 0;
+  cursor: none;
+}
+
+body {
+  background-color: black;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+.container ul {
+  list-style-type: none;
+  display: flex;
+}
+.container ul li {
+  margin: 0 20px;
+  padding: 20px;
+}
+.container ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: "Aliens ate my mum", serif;
+  letter-spacing: 3px;
+  padding: 10px;
+}
+
+ul li:hover ~ .cursor {
+  /* hover animacija */
+  animation: animHover 0.4s forwards;
+  animation-play-state: running;
+}
+
+@keyframes animHover {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(5);
+  }
+}
+
+@keyframes animIdle {
+  0% {
+    transform: scale(5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
